@@ -1,4 +1,4 @@
-package com.udemy.sbsapps.wallpaperbrowser;
+package com.udemy.sbsapps.wallpaperbrowser.Activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.udemy.sbsapps.wallpaperbrowser.Fragments.CollectionsFragment;
+import com.udemy.sbsapps.wallpaperbrowser.Fragments.FavoritesFragment;
+import com.udemy.sbsapps.wallpaperbrowser.Fragments.PhotosFragment;
+import com.udemy.sbsapps.wallpaperbrowser.R;
+import com.udemy.sbsapps.wallpaperbrowser.Utils.Functions;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -72,11 +78,14 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_photos) {
-            // Handle the camera action
+            PhotosFragment photosFragment = new PhotosFragment();
+            Functions.changeMainFragment(MainActivity.this, photosFragment);
         } else if (id == R.id.nav_collections) {
-
+            CollectionsFragment collectionsFragment = new CollectionsFragment();
+            Functions.changeMainFragment(MainActivity.this, collectionsFragment);
         } else if (id == R.id.nav_favorites) {
-
+            FavoritesFragment favoritesFragment = new FavoritesFragment();
+            Functions.changeMainFragment(MainActivity.this, favoritesFragment);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

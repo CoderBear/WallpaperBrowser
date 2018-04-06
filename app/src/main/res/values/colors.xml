@@ -5,7 +5,7 @@
     <color name="colorAccent">#FFA500</color>
 
     <color name="white">#ffffff</color>
-    <color name="transparent_color">#B3000000</color>
+    <color name="transparent_color">#b3000000</color>
 
     <color name="yellow">#FFE049</color>
 </resources>

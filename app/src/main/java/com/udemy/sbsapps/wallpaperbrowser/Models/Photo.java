@@ -7,7 +7,7 @@ public class Photo {
     private String id;
     @SerializedName("description")
     private String description;
-    @SerializedName("url")
+    @SerializedName("urls")
     private PhotoUrl url = new PhotoUrl();
     @SerializedName("user")
     private User user = new User();

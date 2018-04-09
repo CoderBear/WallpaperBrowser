@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.module.AppGlideModule;
 import com.udemy.sbsapps.wallpaperbrowser.Models.Photo;
 import com.udemy.sbsapps.wallpaperbrowser.R;
 import com.udemy.sbsapps.wallpaperbrowser.Utils.SquareImage;

@@ -14,7 +14,7 @@ public interface ApiInterface {
     Call<List<Photo>> getPhotos();
 
     @GET("collections/featured")
-    Call<List<Collection>> getCollections();
+    Call<List<com.udemy.sbsapps.wallpaperbrowser.Models.Collection>> getCollections();
 
     @GET("collections/{id}")
     Call<Collection> getInformationOfCollection(@Path("id") int id);

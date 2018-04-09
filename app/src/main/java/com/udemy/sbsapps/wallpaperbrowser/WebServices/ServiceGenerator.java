@@ -1,5 +1,7 @@
 package com.udemy.sbsapps.wallpaperbrowser.WebServices;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.udemy.sbsapps.wallpaperbrowser.Utils.Constants;
@@ -14,10 +16,6 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by michaelmallamo on 6/04/2018.
- */
-
 public class ServiceGenerator {
     private static Retrofit retrofit = null;
     private static Gson gson = new GsonBuilder().create();
@@ -29,11 +27,12 @@ public class ServiceGenerator {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
                     Request request = chain.request().newBuilder()
-                            .addHeader("Authorization","Client-ID" + Constants.APPLICATION_ID)
+                            .addHeader("Authorization","Client-ID " + Constants.APPLICATION_ID)
                             .build();
                     return chain.proceed(request);
                 }
             });
+
 
     private static OkHttpClient okHttpClient = okHttpClientBuilder.build();
 

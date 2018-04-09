@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import com.udemy.sbsapps.wallpaperbrowser.Adapters.CollectionAdapter;
 import com.udemy.sbsapps.wallpaperbrowser.Models.Collection;
 import com.udemy.sbsapps.wallpaperbrowser.R;
+import com.udemy.sbsapps.wallpaperbrowser.Utils.Functions;
 import com.udemy.sbsapps.wallpaperbrowser.WebServices.ApiInterface;
 import com.udemy.sbsapps.wallpaperbrowser.WebServices.ServiceGenerator;
 
@@ -21,6 +22,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,6 +59,14 @@ public class CollectionsFragment extends Fragment {
         return view;
     }
 
+    @OnItemClick(R.id.fragments_collections_gridview)
+    public void setGridView(int position) {
+        Collection collection = collections.get(position);
+        Bundle bundle = new Bundle();
+        bundle.putInt("collectionId", collection.getId());
+        CollectionFragment collectionFragment = new CollectionFragment();
+        Functions.changeMainFragmentWithBack(getActivity(), collectionFragment);
+    }
     private void getCollections() {
         ApiInterface apiInterface = ServiceGenerator.createService(ApiInterface.class);
         Call<List<Collection>> call = apiInterface.getCollections();

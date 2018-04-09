@@ -17,4 +17,12 @@ public class Functions {
                 .replace(R.id.mainContainer, fragment)
                 .commit();
     }
+
+    public static void changeMainFragmentWithBack(FragmentActivity fragmentActivity, Fragment fragment){
+        fragmentActivity.getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.mainContainer, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
 }

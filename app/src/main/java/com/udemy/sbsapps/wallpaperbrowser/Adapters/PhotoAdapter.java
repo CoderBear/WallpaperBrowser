@@ -1,12 +1,16 @@
 package com.udemy.sbsapps.wallpaperbrowser.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.udemy.sbsapps.wallpaperbrowser.Activities.FullScreenPhotoActivity;
 import com.udemy.sbsapps.wallpaperbrowser.Models.Photo;
 import com.udemy.sbsapps.wallpaperbrowser.R;
 import com.udemy.sbsapps.wallpaperbrowser.Utils.SquareImage;
@@ -15,6 +19,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> {
@@ -38,6 +43,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
         Photo photo = photos.get(position);
         holder.username.setText(photo.getUser().getUsername());
+        Log.i(PhotoAdapter.class.getSimpleName(), photo.getUrl().getRegular());
         GlideApp
                 .with(context)
                 .load(photo.getUrl().getRegular())
@@ -64,9 +70,21 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
         TextView username;
         @BindView(R.id.item_photo_photo)
         SquareImage photo;
+        @BindView(R.id.item_photo_layout)
+        FrameLayout frameLayout;
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+        }
+
+        @OnClick(R.id.item_photo_layout)
+        public void setFrameLayout() {
+            int position = getAdapterPosition();
+            String photoId = photos.get(position).getId();
+            Intent intent = new Intent(context, FullScreenPhotoActivity.class);
+            intent.putExtra("photoId", photoId);
+            context.startActivity(intent);
         }
 
     }

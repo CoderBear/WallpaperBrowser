@@ -25,6 +25,7 @@ import com.udemy.sbsapps.wallpaperbrowser.Utils.RealmController;
 import com.udemy.sbsapps.wallpaperbrowser.WebServices.ApiInterface;
 import com.udemy.sbsapps.wallpaperbrowser.WebServices.ServiceGenerator;
 
+import butterknife.BindDrawable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -48,9 +49,9 @@ public class FullScreenPhotoActivity extends AppCompatActivity {
     @BindView(R.id.activity_fullscreen_photo_username)
     TextView username;
 
-    @BindView(R.drawable.ic_check_favorite)
+    @BindDrawable(R.drawable.ic_check_favorite)
     Drawable icFavorite;
-    @BindView(R.drawable.ic_check_favorited)
+    @BindDrawable(R.drawable.ic_check_favorited)
     Drawable icFavorited;
 
     private Bitmap photoBitmap;

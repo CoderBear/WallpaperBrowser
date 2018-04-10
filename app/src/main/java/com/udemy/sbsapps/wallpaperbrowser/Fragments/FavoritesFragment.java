@@ -69,6 +69,6 @@ public class FavoritesFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();;
+        unbinder.unbind();
     }
 }

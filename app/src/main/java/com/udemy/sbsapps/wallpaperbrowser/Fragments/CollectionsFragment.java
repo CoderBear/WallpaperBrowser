@@ -40,10 +40,6 @@ public class CollectionsFragment extends Fragment {
     private List<Collection> collections = new ArrayList<>();
     private Unbinder unbinder;
 
-    public CollectionsFragment() {
-        // Required empty public constructor
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

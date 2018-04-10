@@ -2,11 +2,9 @@ package com.udemy.sbsapps.wallpaperbrowser.Models;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by michaelmallamo on 6/04/2018.
- */
+import io.realm.RealmObject;
 
-public class PhotoUrl {
+public class PhotoUrl extends RealmObject {
     @SerializedName("full")
     private String full;
     @SerializedName("regular")

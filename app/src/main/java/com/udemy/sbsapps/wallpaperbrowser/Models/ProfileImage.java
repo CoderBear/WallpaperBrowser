@@ -2,11 +2,9 @@ package com.udemy.sbsapps.wallpaperbrowser.Models;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by michaelmallamo on 6/04/2018.
- */
+import io.realm.RealmObject;
 
-public class ProfileImage {
+public class ProfileImage extends RealmObject {
     @SerializedName("small")
     private String small;
     @SerializedName("medium")

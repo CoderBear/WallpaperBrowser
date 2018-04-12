@@ -8,6 +8,7 @@ import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +37,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FullScreenPhotoActivity extends AppCompatActivity {
+    private static final String TAG = FullScreenPhotoActivity.class.getSimpleName();
+
     @BindView(R.id.activity_fullscreen_photo_photo)
     ImageView fullscreenPhoto;
     @BindView(R.id.activity_fullscreen_photo_user_avatar)
@@ -82,13 +85,17 @@ public class FullScreenPhotoActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<Photo> call, @NonNull Response<Photo> response) {
                 if(response.isSuccessful()){
+                    Log.i(TAG, "success");
                     photo = response.body();
                     updateUI(photo);
+                } else {
+                    Log.i(TAG, response.message());
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Photo> call, @NonNull Throwable t) {
+                Log.e(TAG, t.getMessage());
             }
         });
     }
@@ -146,6 +153,7 @@ public class FullScreenPhotoActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
+        if(unbinder != null)
+            unbinder.unbind();
     }
 }

@@ -24,6 +24,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> {
 
+    private final String TAG = PhotoAdapter.class.getSimpleName();
     private Context context;
     private List<Photo> photos;
 
@@ -65,7 +66,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
         return photos.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.item_photo_user_avatar)
         CircleImageView userAvatar;
@@ -76,13 +77,14 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
         @BindView(R.id.item_photo_layout)
         FrameLayout frameLayout;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
 
         @OnClick(R.id.item_photo_layout)
-        public void setFrameLayout() {
+        void setFrameLayout() {
+            Log.i(TAG, "Clicked");
             int position = getAdapterPosition();
             String photoId = photos.get(position).getId();
             Intent intent = new Intent(context, FullScreenPhotoActivity.class);

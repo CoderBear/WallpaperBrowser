@@ -1,7 +1,7 @@
 package com.udemy.sbsapps.wallpaperbrowser.Fragments;
 
-import android.nfc.Tag;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -71,6 +71,7 @@ public class CollectionFragment extends Fragment {
         Bundle bundle = getArguments();
         int collectionId = bundle.getInt("collectionId");
 
+        showProgressBar(true);
         getInformationOfCollectionId(collectionId);
         getPhotosOfCollection(collectionId);
 
@@ -82,7 +83,7 @@ public class CollectionFragment extends Fragment {
         Call<Collection> call = apiInterface.getInformationOfCollection(collectionId);
         call.enqueue(new Callback<Collection>() {
             @Override
-            public void onResponse(Call<Collection> call, Response<Collection> response) {
+            public void onResponse(@NonNull Call<Collection> call, @NonNull Response<Collection> response) {
                 if(response.isSuccessful()){
                     Collection collection = response.body();
                     title.setText(collection.getTitle());
@@ -97,7 +98,7 @@ public class CollectionFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<Collection> call, Throwable t) {
+            public void onFailure(@NonNull Call<Collection> call, @NonNull Throwable t) {
                 Log.i(TAG, "fail " + t.getMessage());
             }
         });
@@ -107,7 +108,7 @@ public class CollectionFragment extends Fragment {
         Call<List<Photo>> call = apiInterface.getPhotosOfCollection(collectionId);
         call.enqueue(new Callback<List<Photo>>() {
             @Override
-            public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
+            public void onResponse(@NonNull Call<List<Photo>> call, @NonNull Response<List<Photo>> response) {
                 if(response.isSuccessful()){
                     photos.addAll(response.body());
                     photoAdapter.notifyDataSetChanged();
@@ -118,7 +119,7 @@ public class CollectionFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Photo>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Photo>> call, @NonNull Throwable t) {
                 Log.i(TAG, "fail " + t.getMessage());
                 showProgressBar(false);
             }

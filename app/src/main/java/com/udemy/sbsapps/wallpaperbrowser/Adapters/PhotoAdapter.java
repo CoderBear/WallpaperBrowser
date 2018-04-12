@@ -51,14 +51,11 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
                 .placeholder(R.drawable.placeholder)
                 .override(600,600)
                 .into(holder.photo);
-//        Log.i(PhotoAdapter.class.getSimpleName(), holder.photo.getDrawable().toString());
 
         GlideApp
                 .with(context)
                 .load(photo.getUser().getProfileImage().getSmall())
                 .into(holder.userAvatar);
-        Log.i(PhotoAdapter.class.getSimpleName(), photo.getUser().getProfileImage().getSmall());
-//        Log.i(PhotoAdapter.class.getSimpleName(), userAvatar.getDrawable().toString());
     }
 
     @Override

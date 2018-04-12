@@ -44,7 +44,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
         Photo photo = photos.get(position);
         holder.username.setText(photo.getUser().getUsername());
-        Log.i(PhotoAdapter.class.getSimpleName(), photo.getUrl().getRegular());
         GlideApp
                 .with(context)
                 .load(photo.getUrl().getRegular())

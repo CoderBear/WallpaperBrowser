@@ -6,10 +6,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-/**
- * Created by michaelmallamo on 6/04/2018.
- */
-
 @SuppressLint("AppCompatCustomView")
 public class SquareImage extends ImageView {
     public SquareImage(Context context) {
@@ -22,10 +18,6 @@ public class SquareImage extends ImageView {
 
     public SquareImage(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    }
-
-    public SquareImage(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     @Override

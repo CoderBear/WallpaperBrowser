@@ -4,10 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import io.realm.RealmObject;
 
-/**
- * Created by michaelmallamo on 6/04/2018.
- */
-
 public class User extends RealmObject {
     @SerializedName("id")
     private String id;

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    tools:context="com.udemy.sbsapps.wallpaperbrowser.Activities.FullScreenPhotoActivity">
 
     <ImageView
         android:id="@+id/activity_fullscreen_photo_photo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:contentDescription="@string/activity_fullscreen_content_description"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/placeholder" />
 
@@ -25,16 +25,16 @@
             android:id="@+id/activity_fullscreen_photo_user_avatar"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_gravity="center"
             android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/activity_fullscreen_photo_username"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
-            android:layout_weight="1"
-            android:text="TextView"
+            android:text="@string/activity_fullscreen_username"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"
             android:textStyle="bold" />

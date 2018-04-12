@@ -1,6 +1,7 @@
 package com.udemy.sbsapps.wallpaperbrowser.Fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -58,28 +59,36 @@ public class CollectionsFragment extends Fragment {
     @OnItemClick(R.id.fragments_collections_gridview)
     public void setGridView(int position) {
         Collection collection = collections.get(position);
+        Log.i(TAG, collection.getId() + "");
         Bundle bundle = new Bundle();
         bundle.putInt("collectionId", collection.getId());
         CollectionFragment collectionFragment = new CollectionFragment();
+        collectionFragment.setArguments(bundle);
         Functions.changeMainFragmentWithBack(getActivity(), collectionFragment);
     }
+
     private void getCollections() {
         ApiInterface apiInterface = ServiceGenerator.createService(ApiInterface.class);
         Call<List<Collection>> call = apiInterface.getCollections();
         call.enqueue(new Callback<List<Collection>>() {
             @Override
-            public void onResponse(Call<List<Collection>> call, Response<List<Collection>> response) {
+            public void onResponse(@NonNull Call<List<Collection>> call, @NonNull Response<List<Collection>> response) {
                 if(response.isSuccessful()){
-                    collections.addAll(response.body());
-                    collectionAdapter.notifyDataSetChanged();
+                    List<Collection> body = response.body();
+                    if(body != null) {
+                        collections.addAll(body);
+                        collectionAdapter.notifyDataSetChanged();
+                        Log.d(TAG, "size " + collections.size());
+                    }
                 }
                 else {
                     Log.i(TAG,"response fail " + response.message());
                 }
+                showProgressBar(false);
             }
 
             @Override
-            public void onFailure(Call<List<Collection>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Collection>> call, @NonNull Throwable t) {
                 Log.i(TAG,"getCollections fail " + t.getMessage());
                 showProgressBar(false);
             }
